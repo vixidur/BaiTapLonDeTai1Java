@@ -18,25 +18,111 @@ public class LUACHONCUNG extends javax.swing.JFrame {
      * Creates new form LUACHONCUNG
      */
     private MainForm luachoncung;
+
     public void setLuaChonCung(MainForm luachoncung) {
         this.luachoncung = luachoncung;
     }
-    public LUACHONCUNG() {
-        initComponents();
-        JButton btnBackToAdmin = new JButton("BACK");
-        btnBackToAdmin.setBounds(10, 30, 70, 30);
-        btnBackToAdmin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent evt) {
-                if (luachoncung != null) {
-                    luachoncung.setVisible(true);
-                    setVisible(false);
-                }
-            }
-        });
 
-        this.add(btnBackToAdmin);
+    public LUACHONCUNG() {
+        this.setUndecorated(true);
+        initComponents();
+        jLabel4.setComponentZOrder(jLabel3, 0);
+        jLabel4.setComponentZOrder(jLabel1, 0);
+        jLabel4.setComponentZOrder(BACK, 0);
         this.setLocationRelativeTo(null);
+    }
+
+    private void updateZodiacInfo(String selectedZodiac) {
+        String startDate = "";
+        String endDate = "";
+        String previousZodiac = "";
+        String nextZodiac = "";
+
+        // Tính toán thông tin dựa trên cung hoàng đạo được chọn
+        switch (selectedZodiac) {
+            case "Bảo Bình":
+                startDate = "20/01";
+                endDate = "18/02";
+                previousZodiac = "Ma Kết";
+                nextZodiac = "Song Ngư";
+                break;
+            case "Song Ngư":
+                startDate = "19/02";
+                endDate = "20/03";
+                previousZodiac = "Bảo Bình";
+                nextZodiac = "Bạch Dương";
+                break;
+            case "Bạch Dương":
+                startDate = "21/03";
+                endDate = "19/04";
+                previousZodiac = "Song Ngư";
+                nextZodiac = "Kim Ngưu";
+                break;
+            case "Kim Ngưu":
+                startDate = "20/04";
+                endDate = "20/05";
+                previousZodiac = "Bạch Dương";
+                nextZodiac = "Song Tử";
+                break;
+            case "Song Tử":
+                startDate = "21/05";
+                endDate = "20/06";
+                previousZodiac = "Kim Ngưu";
+                nextZodiac = "Cự Giải";
+                break;
+            case "Cự Giải":
+                startDate = "21/06";
+                endDate = "22/07";
+                previousZodiac = "Song Tử";
+                nextZodiac = "Sư Tử";
+                break;
+            case "Sư Tử":
+                startDate = "23/07";
+                endDate = "22/08";
+                previousZodiac = "Cự Giải";
+                nextZodiac = "Xử Nữ";
+                break;
+            case "Xử Nữ":
+                startDate = "23/08";
+                endDate = "22/09";
+                previousZodiac = "Sư Tử";
+                nextZodiac = "Thiên Bình";
+                break;
+            case "Thiên Bình":
+                startDate = "23/09";
+                endDate = "22/10";
+                previousZodiac = "Xử Nữ";
+                nextZodiac = "Thiên Yết";
+                break;
+            case "Thiên Yết":
+                startDate = "23/10";
+                endDate = "21/11";
+                previousZodiac = "Xử Nữ";
+                nextZodiac = "Bò Cạp";
+                break;
+            case "Nhân Mã":
+                startDate = "22/11";
+                endDate = "21/12";
+                previousZodiac = "Thiên Yết";
+                nextZodiac = "Ma Kết";
+                break;
+            case "Ma Kết":
+                startDate = "22/12";
+                endDate = "19/01";
+                previousZodiac = "Nhân Mã";
+                nextZodiac = "Bảo Bình";
+                break;
+            // Thêm các trường hợp khác cho các cung hoàng đạo khác
+            default:
+                // Nếu không phù hợp với bất kỳ cung hoàng đạo nào, thực hiện một xử lý mặc định hoặc báo lỗi
+                break;
+        }
+
+        // Cập nhật các nhãn với thông tin đã lấy được
+        ngaybatdau.setText("Ngày bắt đầu: " + startDate);
+        ngayketthuc.setText("Ngày kết thúc: " + endDate);
+        cungtruoc.setText("Cung trước: " + previousZodiac);
+        cungsau.setText("Cung sau: " + nextZodiac);
     }
 
     /**
@@ -49,44 +135,140 @@ public class LUACHONCUNG extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        zodiacComboBox = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
+        BACK = new javax.swing.JLabel();
+        ngaybatdau = new javax.swing.JLabel();
+        ngayketthuc = new javax.swing.JLabel();
+        cungtruoc = new javax.swing.JLabel();
+        cungsau = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("LỰA CHỌN CUNG HOÀNG ĐẠO");
 
+        zodiacComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Bảo Bình", "Song Ngư", "Bạch Dương", "Kim Ngưu", "Song Tử", "Cự Giải", "Sư Tử", "Xử Nữ", "Thiên Bình", "Thiên Yết", "Nhân Mã", "Ma Kết" }));
+        zodiacComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                zodiacComboBoxActionPerformed(evt);
+            }
+        });
+
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel2.setText("KẾT QUẢ:");
+
+        BACK.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        BACK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/back.png"))); // NOI18N
+        BACK.setText("BACK");
+        BACK.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BACKMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BACKMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BACKMouseExited(evt);
+            }
+        });
+
+        ngaybatdau.setForeground(new java.awt.Color(0, 0, 153));
+
+        ngayketthuc.setForeground(new java.awt.Color(0, 0, 204));
+
+        cungtruoc.setForeground(new java.awt.Color(0, 0, 153));
+
+        cungsau.setForeground(new java.awt.Color(0, 0, 102));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/khungLUACHONCUNG.png"))); // NOI18N
+        jLabel3.setText("jLabel3");
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/background-LUACHONCUNG.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(154, 154, 154)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addGap(130, 130, 130)
+                .addComponent(zodiacComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(jLabel2))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(ngayketthuc))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(cungtruoc, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(cungsau, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(200, 200, 200)
+                .addComponent(ngaybatdau))
+            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(jLabel1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(130, 130, 130)
+                .addComponent(BACK, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(67, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(108, 108, 108)
+                .addComponent(zodiacComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addComponent(jLabel2)
-                .addGap(63, 63, 63))
+                .addGap(4, 4, 4)
+                .addComponent(ngayketthuc)
+                .addGap(4, 4, 4)
+                .addComponent(cungtruoc)
+                .addGap(4, 4, 4)
+                .addComponent(cungsau))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(140, 140, 140)
+                .addComponent(ngaybatdau))
+            .addComponent(jLabel4)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(jLabel1))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addComponent(BACK))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel3))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BACKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BACKMouseEntered
+        BACK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/back-HOVER.png")));
+    }//GEN-LAST:event_BACKMouseEntered
+
+    private void BACKMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BACKMouseExited
+        BACK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/back.png")));
+    }//GEN-LAST:event_BACKMouseExited
+
+    private void BACKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BACKMouseClicked
+        MainForm mainForm = new MainForm();
+        mainForm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_BACKMouseClicked
+
+    private void zodiacComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_zodiacComboBoxActionPerformed
+        updateZodiacInfo((String) zodiacComboBox.getSelectedItem());
+    }//GEN-LAST:event_zodiacComboBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -124,8 +306,15 @@ public class LUACHONCUNG extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel BACK;
+    private javax.swing.JLabel cungsau;
+    private javax.swing.JLabel cungtruoc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel ngaybatdau;
+    private javax.swing.JLabel ngayketthuc;
+    private javax.swing.JComboBox<String> zodiacComboBox;
     // End of variables declaration//GEN-END:variables
 }

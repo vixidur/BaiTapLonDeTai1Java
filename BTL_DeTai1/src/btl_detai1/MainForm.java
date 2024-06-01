@@ -19,14 +19,13 @@ public class MainForm extends javax.swing.JFrame {
      * Creates new form MainForm
      */
     public MainForm() {
+        this.setUndecorated(true);
         initComponents();
         background.setComponentZOrder(menu, 0);
         menu.setComponentZOrder(NGUOIDUNG, 0);
-        menu.setComponentZOrder(DULIEU, 0);
         menu.setComponentZOrder(LUACHONCUNG, 0);
         menu.setComponentZOrder(THOAT, 0);
         background.setComponentZOrder(NGUOIDUNG, 0);
-        background.setComponentZOrder(DULIEU, 0);
         background.setComponentZOrder(LUACHONCUNG, 0);
         background.setComponentZOrder(THOAT, 0);
         this.setLocationRelativeTo(null);
@@ -49,21 +48,25 @@ public class MainForm extends javax.swing.JFrame {
         jLayeredPane2 = new javax.swing.JLayeredPane();
         jLayeredPane3 = new javax.swing.JLayeredPane();
         NGUOIDUNG = new javax.swing.JLabel();
-        DULIEU = new javax.swing.JLabel();
         LUACHONCUNG = new javax.swing.JLabel();
         THOAT = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(51, 51, 255));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/background.png"))); // NOI18N
-        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 510));
+        jPanel1.add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 910, 510));
         jPanel1.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/menu.png"))); // NOI18N
-        jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, -1, 436));
+        jPanel1.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(307, 48, 290, 400));
         menu.getAccessibleContext().setAccessibleParent(this);
 
         jLayeredPane2.setBackground(new java.awt.Color(255, 0, 255));
@@ -94,21 +97,7 @@ public class MainForm extends javax.swing.JFrame {
                 NGUOIDUNGMouseExited(evt);
             }
         });
-        jPanel1.add(NGUOIDUNG, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 240, -1));
-
-        DULIEU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/DULIEU.png"))); // NOI18N
-        DULIEU.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                DULIEUMouseClicked(evt);
-            }
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                DULIEUMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                DULIEUMouseExited(evt);
-            }
-        });
-        jPanel1.add(DULIEU, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 200, 240, 70));
+        jPanel1.add(NGUOIDUNG, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 150, 240, -1));
 
         LUACHONCUNG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/LUACHONCUNG.png"))); // NOI18N
         LUACHONCUNG.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -122,7 +111,7 @@ public class MainForm extends javax.swing.JFrame {
                 LUACHONCUNGMouseExited(evt);
             }
         });
-        jPanel1.add(LUACHONCUNG, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 240, -1));
+        jPanel1.add(LUACHONCUNG, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 230, 240, -1));
 
         THOAT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/THOAT.png"))); // NOI18N
         THOAT.setText("jLabel1");
@@ -137,20 +126,17 @@ public class MainForm extends javax.swing.JFrame {
                 THOATMouseExited(evt);
             }
         });
-        jPanel1.add(THOAT, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 240, -1));
+        jPanel1.add(THOAT, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 240, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 898, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 904, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -180,21 +166,8 @@ public class MainForm extends javax.swing.JFrame {
         LUACHONCUNG luachoncungForm = new LUACHONCUNG();
         luachoncungForm.setLuaChonCung(this);
         luachoncungForm.setVisible(true);
-        this.setVisible(false);
+//        this.setVisible(false);
     }//GEN-LAST:event_LUACHONCUNGMouseClicked
-
-    // DULIEU khi CLICK
-    private void DULIEUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DULIEUMouseClicked
-
-    }//GEN-LAST:event_DULIEUMouseClicked
-
-    private void DULIEUMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DULIEUMouseEntered
-        DULIEU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/DULIEU-HOVER.png")));
-    }//GEN-LAST:event_DULIEUMouseEntered
-
-    private void DULIEUMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DULIEUMouseExited
-        DULIEU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/DULIEU.png")));
-    }//GEN-LAST:event_DULIEUMouseExited
 
     private void LUACHONCUNGMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LUACHONCUNGMouseEntered
         LUACHONCUNG.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/LUACHONCUNG-HOVER.png")));
@@ -218,6 +191,13 @@ public class MainForm extends javax.swing.JFrame {
     private void THOATMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_THOATMouseExited
         THOAT.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/THOAT.png")));
     }//GEN-LAST:event_THOATMouseExited
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int choice = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn thoát không?", "Xác nhận thoát", JOptionPane.YES_NO_OPTION);
+        if (choice == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
@@ -255,7 +235,6 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel DULIEU;
     private javax.swing.JLabel LUACHONCUNG;
     private javax.swing.JLabel NGUOIDUNG;
     private javax.swing.JLabel THOAT;

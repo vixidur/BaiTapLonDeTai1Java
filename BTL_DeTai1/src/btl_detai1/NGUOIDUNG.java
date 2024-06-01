@@ -82,7 +82,7 @@ public class NGUOIDUNG extends javax.swing.JFrame {
         } else if ((month == 9 && day >= 23) || (month == 10 && day <= 22)) {
             return "Cung Thiên Bình";
         } else if ((month == 10 && day >= 23) || (month == 11 && day <= 21)) {
-            return "Cung Bò Cạp";
+            return "Cung Thiên Yết";
         } else if ((month == 11 && day >= 22) || (month == 12 && day <= 21)) {
             return "Cung Nhân Mã";
         } else if ((month == 12 && day >= 22) || (month == 1 && day <= 19)) {
