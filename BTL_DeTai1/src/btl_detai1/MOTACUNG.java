@@ -203,11 +203,11 @@ public class MOTACUNG extends java.awt.Frame {
         });
         setLayout(null);
 
-        descriptionLabel.setFont(new java.awt.Font("Segoe UI", 2, 14)); // NOI18N
+        descriptionLabel.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
         add(descriptionLabel);
-        descriptionLabel.setBounds(11, 215, 478, 370);
+        descriptionLabel.setBounds(10, 160, 478, 420);
         add(image);
-        image.setBounds(170, 50, 150, 150);
+        image.setBounds(170, 20, 150, 150);
 
         close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/close.png"))); // NOI18N
         close.addMouseListener(new java.awt.event.MouseAdapter() {
