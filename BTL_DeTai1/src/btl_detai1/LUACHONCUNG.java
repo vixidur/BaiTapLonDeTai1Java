@@ -261,8 +261,6 @@ public class LUACHONCUNG extends javax.swing.JFrame {
     }//GEN-LAST:event_BACKMouseExited
 
     private void BACKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BACKMouseClicked
-        MainForm mainForm = new MainForm();
-        mainForm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_BACKMouseClicked
 

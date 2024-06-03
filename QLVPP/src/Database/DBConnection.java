@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class DBConnection {
     String dbName = "qlvpp"; //tên cơ sở dữ liệu cần kết nối
-    String connString = "jdbc:sqlserver://DESKTOP-BGVSI3B\\SQLEXPRESS:1433; databaseName=" + dbName + "; user=sa; password=Chienhpt102; encrypt=true;trustServerCertificate=true";
+    String connString = "jdbc:sqlserver://PEGGY\\SQLEXPRESS:1433; databaseName=" + dbName + "; user=sa; password=Chienhpt102; encrypt=true;trustServerCertificate=true";
 
     public Connection GetConnection() {
         try {

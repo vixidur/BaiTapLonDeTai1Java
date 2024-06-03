@@ -292,6 +292,7 @@ public class QUANLYMATHANG extends javax.swing.JFrame {
         txtChatLieu.setText("");
         txtImagePath.setText("");
     }
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         chooseImage();
     }//GEN-LAST:event_jButton1ActionPerformed
