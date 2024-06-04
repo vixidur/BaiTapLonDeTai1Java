@@ -7,7 +7,9 @@ package btl_detai1;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 
 /**
  *
@@ -28,6 +30,9 @@ public class NGUOIDUNG extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         jLabel8.setComponentZOrder(jLabel7, 0);
+        jLabel8.setComponentZOrder(checkCung, 0);
+        jLabel8.setComponentZOrder(BACK, 0);
+        jLabel8.setComponentZOrder(jLabel4, 0);
         this.setLocationRelativeTo(null);
     }
 
@@ -117,38 +122,43 @@ public class NGUOIDUNG extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         ketquaZodiac = new javax.swing.JLabel();
-        checkCung = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         BACK = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        checkCung = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/khungUSER.png"))); // NOI18N
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 30, -1, -1));
 
         jLabel1.setText("Ngày");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, -1, -1));
 
         jLabel2.setText("Tháng");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, -1, -1));
 
         jLabel3.setText("Năm");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 100, -1, -1));
+        getContentPane().add(txtDay, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 45, -1));
+        getContentPane().add(txtMonth, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 47, -1));
+        getContentPane().add(txtYear, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 61, -1));
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("YÊU CẦU NHẬP ĐẦY ĐỦ THÔNG TIN");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel6.setText("KẾT QUẢ:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, -1, 20));
 
         ketquaZodiac.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         ketquaZodiac.setForeground(new java.awt.Color(0, 0, 204));
-
-        checkCung.setText("Check");
-        checkCung.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkCungActionPerformed(evt);
-            }
-        });
+        getContentPane().add(ketquaZodiac, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 170, 20));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/background-NGUOIDUNG.png"))); // NOI18N
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         BACK.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         BACK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/back.png"))); // NOI18N
@@ -164,6 +174,7 @@ public class NGUOIDUNG extends javax.swing.JFrame {
                 BACKMouseExited(evt);
             }
         });
+        getContentPane().add(BACK, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 40, 90, 20));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 2, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
@@ -173,80 +184,24 @@ public class NGUOIDUNG extends javax.swing.JFrame {
                 jLabel4MouseClicked(evt);
             }
         });
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 160, 70, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(BACK, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jLabel5))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jLabel1)
-                .addGap(52, 52, 52)
-                .addComponent(jLabel2)
-                .addGap(47, 47, 47)
-                .addComponent(jLabel3))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(txtDay, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(checkCung))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(110, 110, 110)
-                .addComponent(jLabel6)
-                .addGap(17, 17, 17)
-                .addComponent(ketquaZodiac, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jLabel8)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(jLabel7))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(BACK, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10)
-                .addComponent(jLabel5)
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addGap(14, 14, 14)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(checkCung))
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ketquaZodiac, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)))
-            .addComponent(jLabel8)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel7))
-        );
+        checkCung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/check.png"))); // NOI18N
+        checkCung.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                checkCungMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                checkCungMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                checkCungMouseExited(evt);
+            }
+        });
+        getContentPane().add(checkCung, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 130, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void checkCungActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkCungActionPerformed
-        getCungHoangDao();
-    }//GEN-LAST:event_checkCungActionPerformed
 
     private void BACKMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BACKMouseEntered
         BACK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/back-HOVER.png")));
@@ -268,12 +223,40 @@ public class NGUOIDUNG extends javax.swing.JFrame {
         String zodiacSign = ketquaZodiac.getText();
         if (!zodiacSign.isEmpty()) {
             MOTACUNG motaCung = new MOTACUNG(zodiacSign);
+            Timer timer = new Timer(20, null); // Create a timer to update the opacity
+            timer.addActionListener(new ActionListener() {
+                float opacity = 0f; // Starting opacity
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    opacity += 0.05f; // Increase opacity
+                    if (opacity >= 1f) {
+                        opacity = 1f;
+                        timer.stop(); // Stop the timer once fully visible
+                    }
+                    motaCung.setOpacity(opacity); // Set the new opacity
+                }
+            });
+
+            timer.start(); // Start the timer
             motaCung.setVisible(true);
             this.dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Vui lòng kiểm tra ngày tháng và nhập đầy đủ thông tin.", "Thông báo", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_jLabel4MouseClicked
+
+    private void checkCungMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkCungMouseClicked
+        getCungHoangDao();
+    }//GEN-LAST:event_checkCungMouseClicked
+
+    private void checkCungMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkCungMouseEntered
+        checkCung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/check-HOVER.png")));
+    }//GEN-LAST:event_checkCungMouseEntered
+
+    private void checkCungMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_checkCungMouseExited
+        checkCung.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/check.png")));
+    }//GEN-LAST:event_checkCungMouseExited
 
     /**
      * @param args the command line arguments
@@ -312,7 +295,7 @@ public class NGUOIDUNG extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel BACK;
-    private javax.swing.JButton checkCung;
+    private javax.swing.JLabel checkCung;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

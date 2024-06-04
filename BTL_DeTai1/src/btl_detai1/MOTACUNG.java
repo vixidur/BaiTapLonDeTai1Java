@@ -201,13 +201,11 @@ public class MOTACUNG extends java.awt.Frame {
                 exitForm(evt);
             }
         });
-        setLayout(null);
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         descriptionLabel.setFont(new java.awt.Font("Times New Roman", 2, 18)); // NOI18N
-        add(descriptionLabel);
-        descriptionLabel.setBounds(10, 160, 478, 420);
-        add(image);
-        image.setBounds(170, 20, 150, 150);
+        add(descriptionLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 478, 420));
+        add(image, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 20, 150, 150));
 
         close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/close.png"))); // NOI18N
         close.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -221,12 +219,10 @@ public class MOTACUNG extends java.awt.Frame {
                 closeMouseExited(evt);
             }
         });
-        add(close);
-        close.setBounds(458, 8, 35, 30);
+        add(close, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 8, -1, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buttons/khungMOTA.png"))); // NOI18N
-        add(jLabel1);
-        jLabel1.setBounds(0, -2, 498, 600);
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, -1, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
