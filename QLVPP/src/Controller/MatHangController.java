@@ -26,8 +26,12 @@ public class MatHangController {
     public boolean themMatHang(String maMatHang, String tenMatHang, String donViTinh, String nhaSX, String chatLieu, String hinhAnhPath) {
         return matHangModel.addProduct(maMatHang, tenMatHang, donViTinh, nhaSX, chatLieu, hinhAnhPath);
     }
-    
+
     public boolean suaMatHang(String maMatHang, String tenMatHang, String donViTinh, String nhaSX, String chatLieu, String hinhAnhPath) {
         return matHangModel.editProduct(maMatHang, tenMatHang, donViTinh, nhaSX, chatLieu, hinhAnhPath);
+    }
+
+    public boolean xoaMatHang(String maMatHang) {
+        return matHangModel.delProduct(maMatHang);
     }
 }

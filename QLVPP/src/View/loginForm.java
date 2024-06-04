@@ -19,6 +19,7 @@ public class loginForm extends javax.swing.JFrame {
      * Creates new form loginForm
      */
     private loginController loginController;
+
     public loginForm() {
         initComponents();
         this.loginController = new loginController();
@@ -117,16 +118,12 @@ public class loginForm extends javax.swing.JFrame {
         nhanvien nhanVien = loginController.login(username, password);
 
         if (nhanVien != null) {
-            JOptionPane.showMessageDialog(this, "Đăng nhập thành công\nXin chào, " + nhanVien.getTennv());
-
-            // Chuyển đến form QUANLYMATHANG
-            QUANLYMATHANG quanLyMatHang = new QUANLYMATHANG();
-            quanLyMatHang.setVisible(true);
-
-            // Đóng form đăng nhập hiện tại
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành công\n\nXin chào, " + nhanVien.getTennv() + " ^^");
+            MAINFORM mainForm = new MAINFORM();
+            mainForm.setVisible(true);
             this.dispose();
         } else {
-            JOptionPane.showMessageDialog(this, "Invalid username or password");
+            JOptionPane.showMessageDialog(this, "Tài khoản hoặc mật khẩu không đúng!");
         }
     }//GEN-LAST:event_btnLoginActionPerformed
 

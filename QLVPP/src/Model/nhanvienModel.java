@@ -5,23 +5,24 @@
 package Model;
 
 import Database.DBConnection;
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author Peggy
+ * @author Admin
  */
-public class mathangModel {
+public class nhanvienModel {
 
-    public mathangModel() {
-    }
     DBConnection dbCon = new DBConnection();
 
     public void show(JTable tbl) {
         try (Connection connection = dbCon.GetConnection(); Statement statement = connection.createStatement()) {
-            String sql = "SELECT * FROM mathang";
+            String sql = "SELECT * FROM nhanvien";
             ResultSet resultSet = statement.executeQuery(sql);
             DefaultTableModel dtm = (DefaultTableModel) tbl.getModel();
             dtm.setRowCount(0);
@@ -30,10 +31,7 @@ public class mathangModel {
                     resultSet.getString(1),
                     resultSet.getString(2),
                     resultSet.getString(3),
-                    resultSet.getString(4),
-                    resultSet.getString(5),
-                    resultSet.getString(6)
-                };
+                    resultSet.getString(4),};
                 dtm.addRow(obj);
                 tbl.setModel(dtm);
             }
@@ -42,13 +40,13 @@ public class mathangModel {
         }
     }
 
-    public boolean addProduct(String maMatHang, String tenMatHang, String donViTinh, String nhaSX, String chatLieu, String hinhAnhPath) {
-        if (checkTrungMa(maMatHang)) {
+    public boolean addCustomer(String maNV, String tenNV, String dienThoai, String pass) {
+        if (checkTrungMa(maNV)) {
             return false;
         }
         try (Connection connection = dbCon.GetConnection(); Statement statement = connection.createStatement()) {
-            String sql = "INSERT INTO mathang (mamathang, tenmathang, donvitinh, nhasx, chatlieu, anh) VALUES ('" + maMatHang + "', N'"
-                    + tenMatHang + "', '" + donViTinh + "', N'" + nhaSX + "', N'" + chatLieu + "', '" + hinhAnhPath + "')";
+            String sql = "INSERT INTO nhanvien (manv, tennv, dienthoai, pass) VALUES ('" + maNV + "', N'"
+                    + tenNV + "', '" + dienThoai + "', '" + pass + "')";
             int rowsInserted = statement.executeUpdate(sql);
             return rowsInserted > 0;
         } catch (SQLException e) {
@@ -57,14 +55,13 @@ public class mathangModel {
         }
     }
 
-    public boolean editProduct(String maMatHang, String tenMatHang, String donViTinh, String nhaSX, String chatLieu, String hinhAnhPath) {
-        if (checkTrungMa(maMatHang)) {
+    public boolean editCustomer(String maNV, String tenNV, String dienThoai, String pass) {
+        if (checkTrungMa(maNV)) {
             return false;
         }
         try (Connection connection = dbCon.GetConnection(); Statement statement = connection.createStatement()) {
-            String sql = "UPDATE mathang SET tenmathang = N'" + tenMatHang + "', donvitinh = '" + donViTinh + "', "
-                    + "nhasx = N'" + nhaSX + "', chatlieu = N'" + chatLieu + "', "
-                    + "anh = '" + hinhAnhPath + "' WHERE mamathang = '" + maMatHang + "'";
+            String sql = "UPDATE nhanvien SET tennv = N'" + tenNV + "', dienthoai = '" + dienThoai + "', "
+                    + "pass = '" + pass + "' WHERE manv = '" + maNV + "'";
             int rowsInserted = statement.executeUpdate(sql);
             return rowsInserted > 0;
         } catch (SQLException e) {
@@ -73,9 +70,9 @@ public class mathangModel {
         }
     }
 
-    public boolean delProduct(String maMatHang) {
+    public boolean delCustomer(String maNV) {
         try (Connection connection = dbCon.GetConnection(); Statement statement = connection.createStatement()) {
-            String sql = "DELETE FROM mathang WHERE mamathang = '" + maMatHang + "'";
+            String sql = "DELETE FROM nhanvien WHERE manv = '" + maNV + "'";
             int rowsInserted = statement.executeUpdate(sql);
             return rowsInserted > 0;
         } catch (SQLException e) {
@@ -85,9 +82,8 @@ public class mathangModel {
     }
 
     public boolean checkTrungMa(String ma) {
-        String query = "SELECT COUNT(*) FROM mathang WHERE mamathang = '" + ma + "'";
+        String query = "SELECT COUNT(*) FROM nhanvien WHERE ma = '" + ma + "'";
         try (Connection conn = dbCon.GetConnection(); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(query)) {
-
             if (rs.next()) {
                 return rs.getInt(1) > 0;
             }
@@ -95,5 +91,34 @@ public class mathangModel {
             System.out.println("Debug: " + e.getMessage());
         }
         return false;
+    }
+
+    public void searchNhanVien(JTable tbl, boolean searchByName, String tenNV, boolean searchById, String maNV) {
+        String tim = "SELECT * FROM nhanvien WHERE 1=1"; // Start with a base query that is always true
+
+        if (searchByName && !tenNV.isEmpty()) {
+            tim += " AND tennv LIKE N'%" + tenNV + "%'";
+        }
+        if (searchById && !maNV.isEmpty()) {
+            tim += " AND manv LIKE '%" + maNV + "%'";
+        }
+
+        try (Connection connection = dbCon.GetConnection(); Statement statement = connection.createStatement()) {
+            ResultSet rs = statement.executeQuery(tim);
+            DefaultTableModel dtm = (DefaultTableModel) tbl.getModel();
+            dtm.setRowCount(0);
+            while (rs.next()) {
+                Object obj[] = {
+                    rs.getString(1),
+                    rs.getString(2),
+                    rs.getString(3),
+                    rs.getString(4)
+                };
+                dtm.addRow(obj);
+            }
+            tbl.setModel(dtm);
+        } catch (SQLException e) {
+            System.out.println("Debug: " + e.getMessage());
+        }
     }
 }

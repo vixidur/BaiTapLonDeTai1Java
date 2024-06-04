@@ -67,6 +67,11 @@ public class QUANLYMATHANG extends javax.swing.JFrame {
         txtImagePath = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 0, 0));
@@ -104,6 +109,11 @@ public class QUANLYMATHANG extends javax.swing.JFrame {
         lblImage.setAutoscrolls(true);
 
         jButton2.setText("Thoát");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Thêm");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -120,6 +130,11 @@ public class QUANLYMATHANG extends javax.swing.JFrame {
         });
 
         jButton5.setText("Xóa");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("Hủy");
 
@@ -290,6 +305,7 @@ public class QUANLYMATHANG extends javax.swing.JFrame {
         txtDVT.setText("");
         txtNSX.setText("");
         txtChatLieu.setText("");
+        lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("")));
         txtImagePath.setText("");
     }
 
@@ -330,6 +346,17 @@ public class QUANLYMATHANG extends javax.swing.JFrame {
         }
     }
 
+    private void xoaMatHang() {
+        String ma = txtID.getText();
+
+        boolean success = matHangController.xoaMatHang(ma);
+        if (success) {
+            JOptionPane.showMessageDialog(this, "Xoá mặt hàng thành công!");
+            ClearField();
+        } else {
+            JOptionPane.showMessageDialog(this, "Xoá mặt hàng thất bại!");
+        }
+    }
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         themMatHang();
         matHangController.showMatHangData(tbl);
@@ -365,6 +392,19 @@ public class QUANLYMATHANG extends javax.swing.JFrame {
         Image image = icon.getImage().getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
         lblImage.setIcon(new ImageIcon(image));
     }//GEN-LAST:event_tblMouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        xoaMatHang();
+        matHangController.showMatHangData(tbl);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        this.dispose();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
