@@ -42,6 +42,26 @@ public class mathangModel {
         }
     }
 
+    public void showCapNhatNhapHang(JTable tbl) {
+        try (Connection connection = dbCon.GetConnection(); Statement statement = connection.createStatement()) {
+            String sql = "SELECT mamathang, tenmathang, nhasx FROM mathang";
+            ResultSet resultSet = statement.executeQuery(sql);
+            DefaultTableModel dtm = (DefaultTableModel) tbl.getModel();
+            dtm.setRowCount(0);
+            while (resultSet.next()) {
+                Object obj[] = {
+                    resultSet.getString(1),
+                    resultSet.getString(2),
+                    resultSet.getString(3)
+                };
+                dtm.addRow(obj);
+                tbl.setModel(dtm);
+            }
+        } catch (SQLException e) {
+            System.out.println("Debug: " + e.getMessage());
+        }
+    }
+
     public boolean addProduct(String maMatHang, String tenMatHang, String donViTinh, String nhaSX, String chatLieu, String hinhAnhPath) {
         if (checkTrungMa(maMatHang)) {
             return false;

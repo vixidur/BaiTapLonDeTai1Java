@@ -23,6 +23,10 @@ public class MatHangController {
         matHangModel.show(tbl);
     }
 
+    public void showMatHangDataToTable(JTable tbl) {
+        matHangModel.showCapNhatNhapHang(tbl);
+    }
+
     public boolean themMatHang(String maMatHang, String tenMatHang, String donViTinh, String nhaSX, String chatLieu, String hinhAnhPath) {
         return matHangModel.addProduct(maMatHang, tenMatHang, donViTinh, nhaSX, chatLieu, hinhAnhPath);
     }
